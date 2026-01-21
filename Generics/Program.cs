@@ -127,7 +127,7 @@ var book1 = new EBook()
 {
     Title = "The Great Gatsby",
     Author = "F. Scott Fitzgerald",
-    ReleaseDate = "1925",
+    ReleaseYear = 1925,
     Genre = "Novel",
     FontSize = 12
 };
@@ -136,22 +136,22 @@ var book2 = new EBook()
 {
     Title = "1984",
     Author = "George Orwell",
-    ReleaseDate = "1949",
+    ReleaseYear = 1949,
     Genre = "Dystopian",
     FontSize = 14
 };
 
-var book3 = new EBook()
+var book3 = new PrintedBook()
 {
     Title = "To Kill a Mockingbird",
     Author = "Harper Lee",
-    ReleaseDate = "1960",
+    ReleaseYear = 1960,
     Genre = "Southern Gothic",
-    FontSize = 14
+    isNew = true
 };
 
 
-var ELirary = new Library<EBook>();
+var ELirary = new Library<Book>();
 
 ELirary.AddBook(book1);
 ELirary.AddBook(book2);
@@ -162,13 +162,14 @@ foreach (var book in ELirary)
     Console.WriteLine(book);
 }
 
-Predicate<EBook> sortByFont14 = (EBook book) => book.FontSize == 14;
 
-List<EBook> books = ELirary.SortBooksByCriteria(sortByFont14);
+Predicate<Book> sortByFont14 = (Book book) => book.ReleaseYear == 1949;
+
+List<Book> books = ELirary.SortBooksByCriteria(sortByFont14);
 
 Console.WriteLine();
 
-foreach (EBook book in books)
+foreach (Book book in books)
 {
     Console.WriteLine(book);
 }

@@ -176,39 +176,39 @@ public class Building : IEnumerable<string>
 
 public interface IBook
 {
-    public string ReleaseDate { get; set; }
+    public int ReleaseYear { get; set; }
     public string Author { get; set; }
     public string Title { get; set; }
     public string Genre { get; set; }
 }
 
-
-public class EBook : IBook
+public class Book : IBook
 {
-    public string ReleaseDate { get; set; } = string.Empty;
+    public int ReleaseYear { get; set; }
     public string Author { get; set; } = string.Empty;
     public string Title { get; set; } = string.Empty;
     public string Genre { get; set; } = string.Empty;
+}
 
+
+public class EBook : Book
+{
+    
     public int FontSize { get; set; }
 
     public override string ToString()
     {
-        return $"Author: {Author}, Release Date: {ReleaseDate}, Title: {Title}, Genre: {Genre}, Font Size: {FontSize}";
+        return $"Author: {Author}, Release Year: {ReleaseYear}, Title: {Title}, Genre: {Genre}, Font Size: {FontSize}";
     }
 }
 
-public class PrintedBook : IBook
+public class PrintedBook : Book
 {
-    public string ReleaseDate { get; set; } = string.Empty;
-    public string Author { get; set; } = string.Empty;
-    public string Title { get; set; } = string.Empty;
-    public string Genre { get; set; } = string.Empty;
     public bool isNew { get; set; }
 
     public override string ToString()
     {
-        return $"Author: {Author}, Release Date: {ReleaseDate}, Title: {Title}, Genre: {Genre}, Is New: {isNew}";
+        return $"Author: {Author}, Release Date: {ReleaseYear}, Title: {Title}, Genre: {Genre}, Is New: {isNew}";
     }
 }
 
